@@ -475,6 +475,41 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiYangiYangi extends Struct.CollectionTypeSchema {
+  collectionName: 'yangis';
+  info: {
+    displayName: 'Yangi';
+    pluralName: 'yangis';
+    singularName: 'yangi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.DateTime;
+    ha: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::yangi.yangi'> &
+      Schema.Attribute.Private;
+    matn: Schema.Attribute.Blocks;
+    nimabu: Schema.Attribute.JSON;
+    nom: Schema.Attribute.Enumeration<['noon']>;
+    pasport: Schema.Attribute.BigInteger;
+    publishedAt: Schema.Attribute.DateTime;
+    rasm: Schema.Attribute.Media<'files' | 'images', true>;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -987,6 +1022,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
+      'api::yangi.yangi': ApiYangiYangi;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

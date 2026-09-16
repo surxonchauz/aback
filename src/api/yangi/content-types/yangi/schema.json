@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "yangis",
+  "info": {
+    "singularName": "yangi",
+    "pluralName": "yangis",
+    "displayName": "Yangi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "matn": {
+      "type": "blocks"
+    },
+    "pasport": {
+      "type": "biginteger"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "rasm": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
+    },
+    "ha": {
+      "type": "boolean"
+    },
+    "nimabu": {
+      "type": "json"
+    },
+    "nom": {
+      "type": "enumeration",
+      "enum": [
+        "noon"
+      ]
+    }
+  }
+}
